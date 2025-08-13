@@ -31,7 +31,7 @@ public class AlertTest {
 		driver.findElement(By.linkText("Practice")).click();
 		
 		Thread.sleep(5000);
-		driver.close();
+//		driver.close();
 		driver.quit();
 
 	}
