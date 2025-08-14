@@ -1,9 +1,8 @@
 package com.anto;
-
-import java.time.Duration;
-
+//Need to look into this - SoftAssert not working correctly
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
@@ -19,9 +18,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
-public class FillForm {
+import org.testng.asserts.SoftAssert;
+
+public class SoftAssert_Demo {
 
 	public static void main(String[] args) {
 		
@@ -38,19 +38,21 @@ public class FillForm {
 				
 		// Get text present on the home page
         String homePageText = driver.findElement(By.tagName("h2")).getText();
-        System.out.println(homePageText);
+//        System.out.println(homePageText);
         // Verify the expected text is present
-//        Assert.assertTrue(homePageText.contains("Customers Are Priority One!"), "Text not found on the page");
-        Assert.assertEquals(homePageText, "Customers Are Priority One!", "Text does not match!");
+        SoftAssert softAssert = new SoftAssert();
+        
+//        softAssert.assertEquals(homePageText, "Customers Are Priority!", "Text does not match!");
+        softAssert.assertTrue(homePageText.contains("Customers Are King!"), "Text not found");
         driver.findElement(By.linkText("Sign In")).click();
         
         // Get text present on the login page
         String loginPageText = driver.findElement(By.tagName("h2")).getText();
-        System.out.println(loginPageText);
+//        System.out.println(loginPageText);
         // Verify the expected text is present
-//        Assert.assertTrue(loginPageText.contains("Login"), "Text not found on the page");
-        Assert.assertEquals(loginPageText, "Login", "Text does not match!");
-        
+//        softAssert.assertEquals(loginPageText, "Sign In", "Text does not match!");
+        softAssert.assertTrue(loginPageText.contains("Sign In"), "Text not found");
+        softAssert.assertAll();
         driver.findElement(By.id("email-id")).sendKeys("stratus.noida.pb@gmail.com");
         driver.findElement(By.id("password")).sendKeys("mind2mind");
         driver.findElement(By.id("submit-id")).click();

@@ -4,7 +4,8 @@ import java.time.Duration;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
+import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 import org.apache.commons.io.FileUtils;
 
@@ -27,7 +28,7 @@ public class FindElement {
 		driver.get("http://automatetheboringstuff.com/eval/");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		driver.findElement(By.linkText("2-2.html")).click();
-		driver.wait(1000);
+//		Thread.sleep(3000);
 		driver.quit();
 
 	}
