@@ -22,13 +22,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
 public class SoftAssert_Demo {
+	
+	private static final String URL = "https://automationplayground.com/crm/";
+	private static final String USERNAME = "stratus.noida.pb@gmail.com";
+	private static final String PASSWORD = "mind2mind";
 
 	public static void main(String[] args) {
 		
 		WebDriver driver = new FirefoxDriver();
 		driver.manage().window().setSize(new Dimension(1024, 1024));
 		driver.manage().deleteAllCookies();
-		driver.get("https://automationplayground.com/crm/");
+		driver.get(URL);
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(
 		            webDriver -> ((JavascriptExecutor) webDriver)
 		                .executeScript("return document.readyState")
@@ -53,8 +57,8 @@ public class SoftAssert_Demo {
 //        softAssert.assertEquals(loginPageText, "Sign In", "Text does not match!");
         softAssert.assertTrue(loginPageText.contains("Sign In"), "Text not found");
         softAssert.assertAll();
-        driver.findElement(By.id("email-id")).sendKeys("stratus.noida.pb@gmail.com");
-        driver.findElement(By.id("password")).sendKeys("mind2mind");
+        driver.findElement(By.id("email-id")).sendKeys(USERNAME);
+        driver.findElement(By.id("password")).sendKeys(PASSWORD);
         driver.findElement(By.id("submit-id")).click();
 
 		driver.quit();

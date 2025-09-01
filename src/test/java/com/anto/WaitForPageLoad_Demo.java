@@ -23,13 +23,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class WaitForPageLoad_Demo {
+	
+	private static final String URL = "https://www.flipkart.com/";
 
 	public static void main(String[] args) {
 		
 		WebDriver driver = new EdgeDriver();
 		driver.manage().window().setSize(new Dimension(1024, 1024));
 		driver.manage().deleteAllCookies();
-		driver.get("https://www.flipkart.com/");
+		driver.get(URL);
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(
 		            webDriver -> ((JavascriptExecutor) webDriver)
 		                .executeScript("return document.readyState")

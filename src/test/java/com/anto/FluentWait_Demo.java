@@ -23,11 +23,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class FluentWait_Demo {
+	
+	private static final String URL = "http://www.automationpractice.pl/index.php";
 
 	public static void main(String[] args) {
 		
 		WebDriver driver = new ChromeDriver();
-        driver.get("http://www.automationpractice.pl/index.php");
+        driver.get(URL);
 
         FluentWait<WebDriver> wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(15))
